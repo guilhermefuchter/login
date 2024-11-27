@@ -1,0 +1,206 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    color: #000;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #000;
+    padding: 10px 20px;
+    color: #fff;
+  }
+  
+  header .logo img {
+    width: 50px;
+  }
+  
+  header nav a {
+    margin: 0 10px;
+    color: #fff;
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffe8c8;
+    padding: 20px;
+  }
+  
+  .banner-content h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color:black;
+  }
+  
+  .banner-content button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #000;
+    color: #fff;
+    cursor: pointer;
+    font-weight: bold;
+  }
+  
+  .banner img {
+    max-width: 300px;
+  }
+  
+  .products {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+  }
+  
+  .product {
+    background-color: #d9d9d9;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    width: 30%;
+  }
+  
+  .product img {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+  
+  .product p {
+    margin: 10px 0;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  
+  .product span {
+    font-size: 14px;
+    color: #333;
+  }
+  
+
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  
+  header {
+    background-color: #000;
+    color: #fff;
+    padding: 10px 20px;
+    text-align: center;
+  }
+  
+  nav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+  }
+  
+  nav ul li {
+    margin: 0 10px;
+  }
+  
+  nav ul li a {
+    color: #fff;
+    text-decoration: none;
+  }
+  
+  .produtos {
+    display: flex;
+    justify-content: space-around;
+    margin: 20px;
+  }
+  
+  .produto {
+    border: 1px solid #ccc;
+    padding: 10px;
+    width: 30%;
+    background-color: #fff;
+    text-align: center;
+  }
+  
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: 20px;
+  }
+  
+  button {
+    background-color: #000;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #555;
+  }
+
+    /* Ajuste para as imagens */
+    #lista-tenis img {
+      max-width: 200px; /* Tamanho máximo da largura */
+      max-height: 150px; /* Tamanho máximo da altura */
+      object-fit: cover; /* Mantém proporção ajustando ao espaço */
+    }
+
+    #resultado img {
+      max-width: 200px;
+      max-height: 150px;
+      object-fit: cover;
+    }
+
+     /* Estilização da lista de tênis */
+  #lista-tenis {
+    display: flex; /* Organiza itens em linha */
+    flex-wrap: wrap; /* Permite que os itens quebrem para a próxima linha, se necessário */
+    gap: 20px; /* Espaçamento entre os itens */
+    list-style: none; /* Remove os marcadores da lista */
+    padding: 0;
+    margin-left: 600px;
+  }
+
+  #lista-tenis li {
+    display: flex;
+    flex-direction: column; /* Alinha imagem e texto na vertical */
+    align-items: center; /* Centraliza os itens no eixo horizontal */
+    width: 200px; /* Largura fixa para cada item */
+    text-align: center; /* Centraliza o texto */
+    border: 1px solid #ccc; /* Adiciona uma borda fina ao redor do item */
+    border-radius: 8px; /* Bordas arredondadas */
+    padding: 10px; /* Espaçamento interno */
+    background-color: #f9f9f9; /* Cor de fundo leve */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  }
+
+  #lista-tenis img {
+    max-width: 100%; /* Garante que a imagem não ultrapasse a largura do item */
+    height: auto; /* Mantém a proporção */
+    margin-bottom: 10px; /* Espaço entre a imagem e o texto */
+    border-radius: 4px; /* Bordas arredondadas da imagem */
+  }
+
+  /* Estilização do resultado de busca */
+  #resultado div {
+    display: flex; /* Permite organização semelhante no resultado */
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+
+  * Reset básico */ * { margin: 0; padding: 0; box-sizing: border-box; } /* Estilo geral */ body { font-family: Arial, sans-serif; background-color: #333; color: #fff; text-align: center; } header { background-color: #000; padding: 10px; } header img { width: 80px; } main { margin: 20px; padding: 20px; background-color: #444; border-radius: 8px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); } h1 { margin-bottom: 20px; font-size: 24px; text-transform: uppercase; letter-spacing: 1px; } /* Formulários */ form { display: flex; flex-direction: column; align-items: center; gap: 15px; } label { font-size: 16px; margin-bottom: 5px; } input[type="text"], input[type="password"], input[type="number"], input[type="file"], button { width: 80%; max-width: 400px; padding: 10px; border: none; border-radius: 20px; background-color: #666; color: #fff; font-size: 14px; } button { background-color: #007BFF; cursor: pointer; transition: background-color 0.3s; } button:hover { background-color: #0056b3; } /* Carrinho */ section article { display: flex; align-items: center; justify-content: space-between; background-color: #555; padding: 10px; border-radius: 8px; margin-bottom: 15px; } section article img { width: 70px; height: 70px; border-radius: 50%; border: 2px solid #777; } section article p { margin: 0 10px; font-size: 14px; } /* Link para cadastro */ a { color: #007BFF; text-decoration: none; transition: color 0.3s; } a:hover { color: #0056b3; } /* Botão de finalizar */ button:last-of-type { margin-top: 20px; background-color: #28A745; } button:last-of-type:hover { background-color: #1e7e34; }
+  

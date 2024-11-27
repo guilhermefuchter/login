@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cadastro de Usuário</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="logo">
+      <img src="logo.jpg" alt="Logo Sneakers Store">
+    </div>
+    <h1>CADASTRO DE USUÁRIO</h1>
+    <form id="cadastro-form">
+      <label for="nome">NOME COMPLETO:</label>
+      <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+
+      <label for="email">EMAIL:</label>
+      <input type="email" 
+        style="width: 80%; max-width: 400px; padding: 10px; border: none; border-radius: 20px; background-color: #666; color: #fff; font-size: 14px;" 
+        id="email" 
+        name="email" 
+        placeholder="Digite seu email" 
+        required>
+
+      <label for="cep">CEP:</label>
+      <input type="text" id="cep" name="cep" placeholder="Digite seu CEP" required>
+
+      <label for="usuario">USUÁRIO:</label>
+      <input type="text" id="usuario" name="usuario" placeholder="Escolha um nome de usuário" required>
+
+      <label for="senha">SENHA:</label>
+      <input type="password" id="senha" name="senha" placeholder="Crie uma senha" required>
+
+      <button type="submit">Cadastrar</button>
+    </form>
+    <p>Bem-vindo!</p>
+  </div>
+
+  <script>
+    const form = document.getElementById('cadastro-form');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault(); // Impede o envio padrão do formulário
+
+      // Exibe uma mensagem de sucesso
+      alert('Cadastro realizado com sucesso!');
+
+      // Redireciona para a página principal
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

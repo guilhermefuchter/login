@@ -1,0 +1,4 @@
+<!DOCTYPE html> <html lang="pt-br"> <head> 
+    
+    <link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> <title>Pagamento</title> <link rel="stylesheet" href="pagamento.css"> </head> <body> <div class="container"> <div class="logo"> <img src="logo.jpg" alt="Logo Sneakars Store"> </div> <h1>PAGAMENTO</h1> <div class="codigo-pix"> <label for="pix-codigo">CÓDIGO PIX:</label> <input type="text" id="pix-codigo" value="A8TDFFF5FDV656VYDD7VF8B8D6BTV876D" readonly> </div> <button onclick="copiarCodigo()">COPIAR CÓDIGO</button> </div> <script> function copiarCodigo() { const codigo = document.getElementById('pix-codigo'); codigo.select(); document.execCommand('copy'); alert('Código Pix copiado!'); } </script> </body> </html>

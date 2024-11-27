@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header>
+    <img src="logo.jpg" alt="Sneakers Store Logo">
+  </header>
+  <main>
+    <h1>Login</h1>
+    <form id="login-form">
+      <label for="login">Login:</label>
+      <input type="text" id="login" name="login" required>
+      <label for="senha">Senha:</label>
+      <input type="password" id="senha" name="senha" required>
+      <button type="button" id="google-login">Entrar com o Google</button>
+      <button type="submit">Entrar</button>
+    </form>
+    <p>Não tenho uma conta, desejo me <a href="cadastro.html">cadastrar</a></p>
+  </main>
+
+  <script>
+    const form = document.getElementById('login-form');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault(); // Impede o envio padrão do formulário
+
+      // Exibe a mensagem
+      alert('Você está logado');
+
+      // Redireciona para a página principal
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+</html>

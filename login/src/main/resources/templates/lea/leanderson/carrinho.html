@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carrinho</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #c4c4c4;
+    }
+
+    .carrinho-container {
+      background-color: black;
+      color: white;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .carrinho-container h1 {
+      margin: 0;
+      padding-bottom: 10px;
+      font-size: 24px;
+    }
+
+    .carrinho-itens {
+      background-color: #d3d3d3;
+      padding: 20px;
+    }
+
+    .item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      background-color: #f9f9f9;
+    }
+
+    .item .foto {
+      width: 80px;
+      height: 80px;
+      background-color: #eaeaea;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 12px;
+      color: gray;
+      border: 1px dashed #aaa;
+    }
+
+    .item-info {
+      flex: 1;
+      margin-left: 20px;
+    }
+
+    .item-info input {
+      width: 100%;
+      padding: 5px;
+      margin: 5px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      background-color: #f5f5f5;
+    }
+
+    .remove-btn {
+      background-color: black;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .remove-btn:hover {
+      background-color: #555;
+    }
+
+    .total-container {
+      text-align: right;
+      margin-top: 20px;
+    }
+
+    .total-container input {
+      width: 200px;
+      padding: 10px;
+      border: none;
+      background-color: #f5f5f5;
+      text-align: right;
+      font-size: 16px;
+      font-weight: bold;
+    }
+
+    .finalizar-btn {
+      display: block;
+      margin: 20px auto;
+      padding: 15px 30px;
+      background-color: black;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .finalizar-btn:hover {
+      background-color: #555;
+    }
+
+    #produtos {
+      margin-top: 300px;
+      padding: 20px;
+    }
+
+    #produtos ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #produtos li {
+      background-color: white;
+      margin-bottom: 15px;
+      padding: 10px;
+      border: 1px solid #ccc;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .add-to-cart {
+      background-color: black;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    .add-to-cart:hover {
+      background-color: #555;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="carrinho-container">
+    <h1>CARRINHO</h1>
+    <div class="logo">
+      <img src="logo.jpg" alt="Logo Sneakers Store">
+    </div>
+  </div>
+
+  <div class="carrinho-itens" id="carrinho-itens"></div>
+
+  <!-- Total e botão de finalizar -->
+  <div class="total-container">
+    <label for="total">TOTAL:</label>
+    <input type="text" id="total" value="R$ 0,00" readonly>
+  </div>
+  <a href="pagamento.html"><button class="finalizar-btn">Finalizar Compra</button></a>
+
+  <!-- Lista de Produtos -->
+  <section id="produtos">
+    <h2>Lista de Tênis</h2>
+    <ul id="lista-tenis">
+      <li data-marca="Nike" data-modelo="Air Max" data-tamanho="42" data-preco="800">
+        Nike Air Max - Tamanho 42 - R$ 800
+        <button class="add-to-cart">Adicionar ao Carrinho</button>
+      </li>
+      <li data-marca="Adidas" data-modelo="Ultraboost" data-tamanho="40" data-preco="700">
+        Adidas Ultraboost - Tamanho 40 - R$ 700
+        <button class="add-to-cart">Adicionar ao Carrinho</button>
+      </li>
+      <li data-marca="Puma" data-modelo="RS-X" data-tamanho="41" data-preco="600">
+        Puma RS-X - Tamanho 41 - R$ 600
+        <button class="add-to-cart">Adicionar ao Carrinho</button>
+      </li>
+    </ul>
+  </section>
+
+  <script>
+    // Referências para os elementos
+    const produtos = document.querySelectorAll('.add-to-cart');
+    const carrinhoItens = document.getElementById('carrinho-itens');
+    const totalInput = document.getElementById('total');
+
+    // Lista de itens do carrinho
+    let carrinho = [];
+
+    // Função para adicionar produto ao carrinho
+    produtos.forEach((produto) => {
+      produto.addEventListener('click', () => {
+        const item = produto.parentElement;
+        const modelo = item.getAttribute('data-modelo');
+        const tamanho = item.getAttribute('data-tamanho');
+        const preco = parseFloat(item.getAttribute('data-preco'));
+        const imagem = item.querySelector('img') ? item.querySelector('img').src : 'placeholder.jpg';
+
+        // Adicionar item ao carrinho
+        carrinho.push({ modelo, tamanho, preco, imagem });
+
+        // Atualizar o carrinho na tela
+        atualizarCarrinho();
+      });
+    });
+
+    // Atualizar carrinho na tela
+    function atualizarCarrinho() {
+      // Limpar carrinho na tela
+      carrinhoItens.innerHTML = '';
+
+      // Total do carrinho
+      let total = 0;
+
+      // Adicionar itens ao carrinho na tela
+      carrinho.forEach((item, index) => {
+        total += item.preco;
+
+        const divItem = document.createElement('div');
+        divItem.classList.add('item');
+        divItem.innerHTML = `
+          <div class="foto">FOTO DO TÊNIS</div>
+          <div class="item-info">
+            <label>Modelo do Tênis:</label>
+            <input type="text" value="${item.modelo}" readonly>
+            <label>Tamanho do Tênis:</label>
+            <input type="text" value="${item.tamanho}" readonly>
+            <label>Preço do Tênis:</label>
+            <input type="text" value="R$ ${item.preco.toFixed(2).replace('.', ',')}" readonly>
+          </div>
+          <button class="remove-btn" data-index="${index}">Remover do carrinho</button>
+        `;
+        carrinhoItens.appendChild(divItem);
+      });
+
+      // Atualizar total
+      totalInput.value = `R$ ${total.toFixed(2).replace('.', ',')}`;
+
+      // Adicionar evento de remoção
+      document.querySelectorAll('.remove-btn').forEach((button) => {
+        button.addEventListener('click', () => {
+          const index = button.getAttribute('data-index');
+          carrinho.splice(index, 1); // Remove o item do array
+          atualizarCarrinho(); // Atualiza o carrinho na tela
+        });
+      });
+    }
+  </script>
+</body>
+</html>

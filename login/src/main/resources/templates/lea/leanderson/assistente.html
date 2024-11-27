@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Loja de Tênis</title>
+  <link rel="stylesheet" href="styles.css">
+  <style>
+  
+    
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Assistente</h1>
+    
+    <nav>
+      <ul>
+        <li><a href="index.html">Início</a></li>
+        <li><a href="carrinho.html">Carrinho</a></li>
+      </ul>
+    </nav>
+
+    <div class="logo">
+      <img src="logo.jpg" alt="Logo Sneakers Store">
+    </div>
+  </header>
+  
+  <section id="cadastro">
+    <h2>Buscar por produtos</h2>
+    <form id="form-cadastro">
+      <label for="marca">Marca do Tênis:</label>
+      <input type="text" id="marca">
+      <label for="modelo">Modelo do Tênis:</label>
+      <input type="text" id="modelo">
+      <label for="tamanho">Tamanho:</label>
+      <input type="text" id="tamanho">
+      <label for="preco">Preço:</label>
+      <input type="text" id="preco">
+      <button type="submit">Buscar</button>
+    </form>
+  </section>
+  <div id="resultado"></div>
+  <section id="produtos" style="margin-top:300px">
+    <h2>Lista de Tênis</h2>
+    <ul id="lista-tenis">
+      <li data-marca="Nike" data-modelo="Air Max" data-tamanho="42" data-preco="800">
+        <img src="https://www.jotagestore.com.br/cdn/shop/products/IMG_3157.jpg?v=1687371009" alt="Nike Air Max Terrascape 90">
+        Nike Air Max - Tamanho 42 - R$ 800
+      </li>
+      <li data-marca="NIKE" data-modelo="Ultraboost" data-tamanho="40" data-preco="700">
+        <img src="https://imgcentauro-a.akamaihd.net/1366x1366/98840051.jpg" alt="Adidas Ultraboost">
+        Adidas Ultraboost - Tamanho 40 - R$ 700
+      </li>
+      <li data-marca="NIKE" data-modelo="RS-X" data-tamanho="41" data-preco="600">
+        <img src="https://authenticfeet.vtexassets.com/arquivos/ids/410772-800-800?v=638460366290500000&width=800&height=800&aspect=true" alt="Puma RS-X">
+        Puma RS-X - Tamanho 41 - R$ 600
+      </li>
+    </ul>
+    
+  </section>
+
+  <script>
+    const form = document.getElementById('form-cadastro');
+    const listaTenis = document.querySelectorAll('#lista-tenis li');
+    const resultado = document.getElementById('resultado');
+
+    form.addEventListener('submit', (event) => {
+      event.preventDefault(); // Evita o reload da página
+      const marca = document.getElementById('marca').value.toLowerCase();
+      const modelo = document.getElementById('modelo').value.toLowerCase();
+      const tamanho = document.getElementById('tamanho').value;
+      const preco = document.getElementById('preco').value;
+
+      resultado.innerHTML = ''; // Limpa resultados anteriores
+
+      let encontrado = false;
+      listaTenis.forEach((tenis) => {
+        const tenisMarca = tenis.getAttribute('data-marca').toLowerCase();
+        const tenisModelo = tenis.getAttribute('data-modelo').toLowerCase();
+        const tenisTamanho = tenis.getAttribute('data-tamanho');
+        const tenisPreco = tenis.getAttribute('data-preco');
+
+        if (
+          (marca === '' || tenisMarca.includes(marca)) &&
+          (modelo === '' || tenisModelo.includes(modelo)) &&
+          (tamanho === '' || tenisTamanho === tamanho) &&
+          (preco === '' || tenisPreco === preco)
+        ) {
+          encontrado = true;
+          resultado.innerHTML += `
+            <div>
+              ${tenis.innerHTML}
+            </div>`;
+        }
+      });
+
+      if (!encontrado) {
+        resultado.innerHTML = '<p>Nenhum tênis encontrado.</p>';
+      }
+    });
+  </script>
+</body>
+</html>
